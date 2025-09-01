@@ -19,7 +19,7 @@ interface CurrentAartiStore {
   updateCurrent: (currentAartiId: string) => Promise<void>;
 }
 
-export const useCurrentAartiStore = create<CurrentAartiStore>((set, get) => ({
+export const useCurrentAartiStore = create<CurrentAartiStore>((set) => ({
   current: null,
   loading: false,
   currentAarti: null,

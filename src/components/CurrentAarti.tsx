@@ -1,9 +1,9 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useCurrentAartiStore } from "../stores/currentAartiStore";
 import { Link } from "react-router";
 
 const CurrentAarti = () => {
-  const { current, updateCurrent, currentAarti } = useCurrentAartiStore();
+  const { current, currentAarti } = useCurrentAartiStore();
   console.log(current, currentAarti);
   return (
     <Box

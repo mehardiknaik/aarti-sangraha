@@ -1,10 +1,8 @@
-import React from 'react'
-import { useSettingStore } from '../stores/settingStore'
-import { Box, Slider, Typography } from '@mui/material'
+import { useSettingStore } from "../stores/settingStore";
+import { Box, Slider, Typography } from "@mui/material";
 
 const SettingPage = () => {
-  const { fontSize, primaryColor, setFontSize } = useSettingStore()
-  
+  const { fontSize, setFontSize } = useSettingStore();
 
   return (
     <Box p={3}>
@@ -13,7 +11,7 @@ const SettingPage = () => {
         <Typography variant="h6">Font Size {fontSize}</Typography>
         <Slider
           value={fontSize}
-          onChange={(e, newValue) => setFontSize(newValue)}
+          onChange={(_, newValue) => setFontSize(newValue)}
           aria-labelledby="font-size-slider"
           min={12}
           max={50}
@@ -23,7 +21,7 @@ const SettingPage = () => {
         <Typography variant="h6">Theme</Typography>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SettingPage
+export default SettingPage;

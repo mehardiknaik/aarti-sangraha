@@ -1,5 +1,5 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useAartiStore } from "../../stores/aartiStore";
 
 const AddAartiPage = () => {

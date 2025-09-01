@@ -15,7 +15,7 @@ interface Store {
 
 export const useSettingStore = create<Store>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       fontSize: 20,
       theme: "light",
       primaryColor: "#9119d2ff",
