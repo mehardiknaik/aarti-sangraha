@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 import Layout from "./pages/Aarti/Layout";
 import { CircularProgress } from "@mui/material";
 
@@ -8,7 +8,7 @@ const ViewPage = React.lazy(() => import("./pages/Aarti/ViewPage"));
 const SettingPage = React.lazy(() => import("./pages/SettingPage"));
 const AddAartiPage = React.lazy(() => import("./pages/Aarti/AddAartiPage"));
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (
