@@ -17,7 +17,7 @@ export const useSettingStore = create<Store>()(
   persist(
     (set) => ({
       fontSize: 20,
-      theme: "light",
+      theme: "dark",
       primaryColor: "#9119d2ff",
       setPrimaryColor: (color: string) => set({ primaryColor: color }),
       secondaryColor: "#dc004e",

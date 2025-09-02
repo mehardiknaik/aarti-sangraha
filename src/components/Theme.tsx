@@ -4,7 +4,7 @@ import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { useSettingStore } from "../stores/settingStore";
 
 const Theme: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const {  theme, primaryColor, secondaryColor  } = useSettingStore();
+  const { theme, primaryColor, secondaryColor } = useSettingStore();
 
   return (
     <ThemeProvider theme={lightTheme(theme, primaryColor, secondaryColor)}>

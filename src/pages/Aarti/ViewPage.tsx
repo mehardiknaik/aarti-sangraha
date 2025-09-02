@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useAartiStore } from "../../stores/aartiStore";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useSettingStore } from "../../stores/settingStore";
@@ -10,18 +10,19 @@ import PodcastsIcon from "@mui/icons-material/Podcasts";
 import { useAuthStore } from "../../stores/useAuthStore";
 const ViewPage = () => {
   const { id } = useParams<{ id: string }>();
+  const { current } = useCurrentAartiStore();
   const aarti = useAartiStore((state) => state.getAarti(id || ""));
   const { fontSize } = useSettingStore();
   const { role } = useAuthStore();
   const { updateCurrent } = useCurrentAartiStore();
   const navigate = useNavigate();
-  const canGoBack = window.history.state.idx !== 0;
+  const { palette } = useTheme();
 
   const handleSettingClick = () => {
     navigate("/setting");
   };
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/");
   };
   const handleCurrentAarti = () => {
     if (aarti?.id) updateCurrent(aarti.id);
@@ -44,13 +45,13 @@ const ViewPage = () => {
             inset: 0,
             zIndex: -1,
           }}
+          colour={current?.currentAartiId===id ? palette.primary.main : palette.secondary.main}
         />
         <Box display={"flex"} alignItems="flex-start" gap={1}>
-          {canGoBack && (
-            <IconButton aria-label="go back" onClick={handleGoBack}>
-              <ArrowBackIosNewIcon />
-            </IconButton>
-          )}
+          <IconButton aria-label="go back" onClick={handleGoBack}>
+            <ArrowBackIosNewIcon />
+          </IconButton>
+
           <Typography variant="h4">{aarti?.title}</Typography>
         </Box>
         <Box display={"flex"} alignItems="flex-start" gap={1}>

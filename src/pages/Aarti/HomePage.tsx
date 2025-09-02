@@ -1,12 +1,5 @@
 import { useAartiStore } from "../../stores/aartiStore";
-import {
-  Avatar,
-  Box,
-  CircularProgress,
-  Fab,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Fab, IconButton, Typography } from "@mui/material";
 import SingleItems from "../../components/SingleItems";
 import Header from "../../components/Header";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -14,10 +7,13 @@ import { useNavigate } from "react-router";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useAuthStore } from "../../stores/useAuthStore";
 import AddIcon from "@mui/icons-material/Add";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
+import { useCurrentAartiStore } from "../../stores/currentAartiStore";
 
 const HomePage = () => {
-  const { aartis, loading } = useAartiStore();
+  const { aartis } = useAartiStore();
   const { login, logout, user, role } = useAuthStore();
+  const { updateCurrent } = useCurrentAartiStore();
   const navigate = useNavigate();
 
   const handleSettingClick = () => {
@@ -28,10 +24,9 @@ const HomePage = () => {
     if (!user) login();
     else logout();
   };
-
-  console.log("first", user, role);
-
-  if (loading) return <CircularProgress />;
+  const handleCurrentAarti = () => {
+    updateCurrent("");
+  };
 
   return (
     <Box>
@@ -67,6 +62,11 @@ const HomePage = () => {
               <AccountCircleIcon />
             )}
           </IconButton>
+          {role === "admin" && (
+            <IconButton aria-label="current aarti" onClick={handleCurrentAarti}>
+              <PodcastsIcon />
+            </IconButton>
+          )}
         </Box>
       </Box>
       <Box

@@ -24,6 +24,7 @@ const SingleItems: FC<SingleItemsProps> = ({
           flexDirection: "column",
           alignItems: "flex-start",
           textAlign: "left",
+          height: "100%",
         }}
       >
         <Typography variant="h6" gutterBottom sx={{ color: "text.secondary" }}>
